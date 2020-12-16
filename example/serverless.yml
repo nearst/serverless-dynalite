@@ -1,29 +1,19 @@
 service: serverless-dynalite-example
 
 plugins:
-  - serverless-offline
   - serverless-dynalite
+  - serverless-offline
 
 custom:
   dynalite:
-    start:
-      port: 4567
-      region: us-east-1
+    port: 4567
+    region: us-east-1
 
 provider:
   name: aws
-  runtime: nodejs6.10
+  runtime: nodejs12.x
   stage: dev
   
-# functions:
-#   rulesApi:
-#     handler: sample.handler
-#     events:
-#       - http:
-#           method: GET
-#           path: /
-#           cors: true
-
 resources:  
   Resources:
     ResultsTable:
