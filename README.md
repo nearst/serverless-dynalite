@@ -1,8 +1,12 @@
 # serverless-dynalite
 
-A Serverless plugin to run Dynalite locally to handle DynamoDB development.
+A Serverless plugin to run Dynalite locally to handle DynamoDB development. This is heavily inspired by the [serverless-dynalite](https://github.com/sdd/serverless-dynalite) plugin by Scott Donnelly. 
 
-Integrates with `serverless-offline`.
+Features:
+
+* Integrates with `serverless-offline`.
+* Seeds Tables from a js file
+* Creates Tables from your Resources
 
 ## Getting Started
 
