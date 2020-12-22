@@ -36,17 +36,12 @@ class ServerlessDynalite {
 
     get dynamodb() {
 
-        if (this._dynamodb) {
-            return this._dynamodb;
-        }
-
         const dynamoOptions = {
             endpoint: `http://localhost:${this.port}`,
             region: this.region
         };
 
         this._dynamodb = {
-            converter: AWS.DynamoDB.Converter,
             raw: new AWS.DynamoDB(dynamoOptions),
             doc: new AWS.DynamoDB.DocumentClient(dynamoOptions)
         };
@@ -61,15 +56,7 @@ class ServerlessDynalite {
         );
 
         this.log(`Dynalite listening on http://localhost:${ this.port }`);
-        return this.updateTables();
-    }
 
-    endHandler() {
-        this.dynalite.close();
-    }
-
-
-    async updateTables() {
         if(this.service.resources && this.service.resources.Resources) {
             let resources = Object.values(this.service.resources.Resources);
             let tables = resources.filter(el => el.Type === 'AWS::DynamoDB::Table').map(el => ({
@@ -90,11 +77,18 @@ class ServerlessDynalite {
 
             if(this.config.seed) {
                 for(let seed of this.config.seed) {
+                    if(!seed.source) {
+                        throw Error(`Source is 'undefined' for ${seed.table}`)
+                    }
                     let items = require(path.join(process.cwd(), seed.source))
                     await Promise.all(items.map(Item => this.dynamodb.doc.put({ TableName: seed.table, Item}).promise()))
                 }
             }
         }
+    }
+
+    endHandler() {
+        this.dynalite.close();
     }
 }
 
