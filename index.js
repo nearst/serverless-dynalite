@@ -65,7 +65,7 @@ class ServerlessDynalite {
                 KeySchema: el.Properties.KeySchema,
                 BillingMode: el.Properties.BillingMode,
                 GlobalSecondaryIndexes: el.Properties.GlobalSecondaryIndexes
-            }))
+            }));
             for(let table of tables) {
                 try {
                     this.log(`Dynalite creating table ${table.TableName}`)

@@ -1,14 +1,11 @@
 {
   "name": "@nearst/serverless-dynalite",
-  "version": "2.0.1",
-  "description": "Serverless plugin to run Dynalite locally to handle DynamoDB development. Can watch for table config changes.",
+  "version": "2.0.4",
+  "description": "Serverless plugin to run Dynalite locally to handle DynamoDB development",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sdd/serverless-dynalite.git"
+    "url": "git+https://github.com/nearst/serverless-dynalite.git"
   },
   "keywords": [
     "serverless-plugin",
@@ -19,9 +16,9 @@
   "author": "Scott Donnelly",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Ankcorn/serverless-dynalite/issues"
+    "url": "https://github.com/nearst/serverless-dynalite/issues"
   },
-  "homepage": "https://github.com/Ankcorn/serverless-dynalite#readme",
+  "homepage": "https://github.com/nearst/serverless-dynalite#readme",
   "peerDependencies": {
     "aws-sdk": "^2.610.0"
   },
